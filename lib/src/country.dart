@@ -12,6 +12,7 @@ class Country {
     countryCode: 'WW',
     e164Sc: -1,
     geographic: false,
+    cities: ["World"],
     level: -1,
     name: 'World Wide',
     example: '',
@@ -49,6 +50,9 @@ class Country {
   final String displayNameNoCountryCode;
   final String e164Key;
 
+  ///City list [List<String>]
+  final List<String> cities;
+
   @Deprecated(
     'The modern term is displayNameNoCountryCode. '
     'This feature was deprecated after v1.0.6.',
@@ -67,6 +71,7 @@ class Country {
     required this.geographic,
     required this.level,
     required this.name,
+    required this.cities,
     this.nameLocalized = '',
     required this.example,
     required this.displayName,
@@ -81,6 +86,7 @@ class Country {
         e164Sc = json['e164_sc'],
         geographic = json['geographic'],
         level = json['level'],
+        cities = List<String>.from(json['cities']),
         name = json['name'],
         example = json['example'],
         displayName = json['display_name'],
@@ -112,6 +118,7 @@ class Country {
     data['geographic'] = geographic;
     data['level'] = level;
     data['name'] = name;
+    data['cities'] = cities;
     data['example'] = example;
     data['display_name'] = displayName;
     data['full_example_with_plus_sign'] = fullExampleWithPlusSign;
